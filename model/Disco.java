@@ -1,4 +1,4 @@
-package projeto_torre_hanoi.model;
+package Torre_Hanoi.model;
 
 public class Disco {
     private int tamanho;
@@ -7,7 +7,7 @@ public class Disco {
     public Disco(int tamanho) {
         this.tamanho = tamanho;
         this.asteriscos = "";
-        for(int i = 0; i < tamanho; i++) {
+        for (int i = 0; i < tamanho; i++) {
             asteriscos += '*';
         }
     }

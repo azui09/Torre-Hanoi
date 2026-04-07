@@ -1,4 +1,4 @@
-package projeto_torre_hanoi.model;
+package Torre_Hanoi.model;
 
 public class Pilhas<T> {
     private int topoPilha;

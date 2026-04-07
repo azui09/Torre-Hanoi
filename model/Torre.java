@@ -1,8 +1,8 @@
-package projeto_torre_hanoi.model;
+package Torre_Hanoi.model;
 
 public class Torre {
-    private String nome;
-    private Pilhas<Disco> discos;
+    private final String nome;
+    private final Pilhas<Disco> discos;
 
     public Torre(String nome, int capacidade) {
         this.nome = nome;
@@ -10,7 +10,7 @@ public class Torre {
     }
 
     public void adicionarDisco(Disco disco) throws Exception {
-        if(discos.isEmpty() || discos.topo().getTamanho() > disco.getTamanho()) {
+        if (discos.isEmpty() || discos.topo().getTamanho() > disco.getTamanho()) {
             discos.push(disco);
         } else {
             throw new Exception("Movimento invalido");
@@ -28,15 +28,15 @@ public class Torre {
     public void mostrarDiscos() {
         Pilhas<Disco> temporaria = new Pilhas<>(discos.sizeElements());
         try {
-            while(!discos.isEmpty()) {
-                temporaria.push(discos.pop());
-            }
-            while(!temporaria.isEmpty()) {
-                Disco disco = temporaria.pop();
+            while (!discos.isEmpty()) {
+                Disco disco = discos.pop();
                 System.out.println(disco.getAsteriscos());
-                discos.push(disco);
+                temporaria.push(disco);
             }
-        } catch(Exception e) {
+            while (!temporaria.isEmpty()) {
+                discos.push(temporaria.pop());
+            }
+        } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
     }
